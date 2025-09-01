@@ -5,6 +5,10 @@ pipeline {
         SONARQUBE = credentials('sonarqube-token') // ชื่อ Credential ของ Jenkins
     }
 
+    tools {
+        nodejs "NodeJS_Installation_Name"
+    }
+
     stages {
         stage('Checkout') {
             steps {
