@@ -30,6 +30,7 @@ app.use((req, res, next) => {
 // Route handling
 app.get("/", (req, res) => {
   res.send("Hello World!");
+  res.send("Hello World!");
 });
 
 app.get("/about", (req, res) => {
