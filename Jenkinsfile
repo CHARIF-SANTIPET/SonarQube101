@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'feature/lab', url: 'https://github.com/CHARIF-SANTIPET/SonarQube101.git'
+                git branch: 'feature', url: 'https://github.com/CHARIF-SANTIPET/SonarQube101.git'
             }
         }
 
