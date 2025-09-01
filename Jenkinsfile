@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/CHARIF-SANTIPET/SonarQube101.git'
+                git branch: 'feature/lab', url: 'https://github.com/CHARIF-SANTIPET/SonarQube101.git'
             }
         }
 
@@ -32,7 +32,7 @@ pipeline {
 
         stage('Quality Gate') {
             steps {
-                timeout(time: 5, unit: 'MINUTES') {
+                timeout(time: 1, unit: 'MINUTES') {
                     waitForQualityGate abortPipeline: true
                 }
             }
