@@ -36,3 +36,7 @@ app.get("/about", (req, res) => {
   res.send("About page")
 });
 
+app.get("/lab", (req, res) => {
+  res.send("Lab Test page!");
+} )
+
