@@ -24,7 +24,7 @@ pipeline {
 
         stage('SonarQube Scan') {
             steps {
-                withSonarQubeEnv('SonarQubeScaner-7.2.0.5079') {
+                withSonarQubeEnv('sonarqube-v25.8.0.112029') {
                     sh 'npx sonar-scanner -Dsonar.projectKey=mywebapp'
                 }
             }
