@@ -40,3 +40,8 @@ app.get("/lab", (req, res) => {
   res.send("Lab Test page!");
 } )
 
+function sum(a, b) { return a+b; }
+function add(x, y) { return x+y; }
+
+const unusedVar = 123;
+
