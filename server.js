@@ -19,12 +19,20 @@ connection.connect((err) => {
     return;
   }
   console.log('Connected to MySQL database as id ' + connection.threadId);
+
+  // **Bug/Code smell:** ลืมปิด connection เมื่อไม่ใช้งาน
 });
 
 // Middleware to log request method and URL
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.url}`);
-  next();
+
+  // **Bug/Code smell:** ไม่เรียก next() ในบางกรณี
+  if (req.url === "/skip") {
+    res.send("Skipped");
+  } else {
+    next();
+  }
 });
 
 // Route handling
@@ -33,10 +41,18 @@ app.get("/", (req, res) => {
 });
 
 app.get("/about", (req, res) => {
-  res.send("About page")
+  // **Code smell:** ไม่ handle error และใช้ callback nested แบบไม่จำเป็น
+  connection.query("SELECT 1", (err, result) => {
+    if (err) console.log("DB query failed"); // ไม่ส่ง response กลับ
+    res.send("About page");
+  });
 });
 
 app.get("/lab", (req, res) => {
   res.send("Lab Test page!");
-} )
+});
 
+// **Bug:** ลืม handle server error
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
