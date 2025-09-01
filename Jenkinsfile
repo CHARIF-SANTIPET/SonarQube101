@@ -6,7 +6,7 @@ pipeline {
     }
 
     tools {
-        nodejs "NodeJS_Installation_Name"
+        nodejs "NodeJs"
     }
 
     stages {
